@@ -33,27 +33,18 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
-    final CounterController controller = Get.put(CounterController());
-
+    CounterController controller = Get.put(CounterController());
     return Scaffold(
-      appBar: AppBar(
-        title: const Text(
-          "GetX Demo",
-          style: TextStyle(
-              fontWeight: FontWeight.bold, fontSize: 24, color: Colors.teal),
-        ),
-      ),
+      appBar: AppBar(title: const Text("Counter App")),
       body: Center(
-        child: Obx(
-          () => Column(
+        child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [Text(controller.counter.toString())],
-          ),
-        ),
+            //  crossAxisAlignment: CrossAxisAlignment.center,
+            children: [Obx(() => Text(controller.counter.toString()))]),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {
+        
+          onPressed: () {
           controller.increment();
         },
         child: const Icon(Icons.add),
